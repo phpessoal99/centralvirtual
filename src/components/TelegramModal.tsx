@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle2, ExternalLink, ShieldCheck, Users } from 'lucide-react';
 import Logo from './Logo';
@@ -16,10 +16,9 @@ export const TelegramModal: React.FC<TelegramModalProps> = ({
   onClose,
   buttonText
 }) => {
-  
   const isSuporte = buttonText?.toUpperCase().includes('VAGA') || buttonText?.toUpperCase().includes('SUPORTE') || buttonText?.toUpperCase().includes('GARANTIR');
-
-
+  
+  const finalLink = isSuporte ? "https://t.me" : "https://t.me";
   const finalBtnText = isSuporte ? "FALAR COM O SUPORTE AGORA" : "ENTRAR NO TELEGRAM AGORA";
   const finalDisplayLink = isSuporte ? "t.me/suportecentralvirtual" : "t.me/+E4BHwf5riSNmMjBh";
 
