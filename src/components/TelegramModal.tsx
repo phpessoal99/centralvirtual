@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle2, ExternalLink, ShieldCheck, Users } from 'lucide-react';
 import { Logo } from './Logo';
 
-
 interface TelegramModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -20,7 +19,7 @@ export const TelegramModal: React.FC<TelegramModalProps> = ({
   const isSuporte = buttonText?.toUpperCase().includes('VAGA') || buttonText?.toUpperCase().includes('SUPORTE') || buttonText?.toUpperCase().includes('GARANTIR');
   
   const finalLink = isSuporte ? "https://t.me" : "https://t.me";
-  const finalBtnText = isSuporte ? "FALAR COM O SUPORTE AGORA" : "ENTRAR NO TELEGRAM AGORA";
+  const finalBtnText = isSuporte ? "FALAR COM O SUPORTE AGORA" : "ENTRE PARA O GRUPO AGORA";
   const finalDisplayLink = isSuporte ? "t.me/suportecentralvirtual" : "t.me/+E4BHwf5riSNmMjBh";
 
   return (
@@ -38,7 +37,9 @@ export const TelegramModal: React.FC<TelegramModalProps> = ({
             </button>
 
             <div className="flex flex-col items-center text-center space-y-4">
-              <Logo className="h-12 w-auto" />
+              <div className="mb-4">
+                <Logo className="h-12 w-auto" />
+              </div>
               
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#17B95B]/10 text-[#17B95B] text-xs font-semibold tracking-wide uppercase border border-[#17B95B]/20">
                 <ShieldCheck size={14} /> VAGA GRATUITA RESERVADA
