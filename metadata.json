@@ -1,0 +1,6 @@
+{
+  "name": "Central Virtual - Futebol Virtual",
+  "description": "Página oficial da Central Virtual - Análise ao vivo de Futebol Virtual com método validado e IA exclusiva no Telegram.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
