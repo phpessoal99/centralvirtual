@@ -1,120 +1,74 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle2, ExternalLink, ShieldCheck, Users } from 'lucide-react';
-import { Logo } from './Logo';
+import Logo from './Logo';
 
 interface TelegramModalProps {
   isOpen: boolean;
   onClose: () => void;
   telegramLink?: string;
+  buttonText?: string;
+  linkDisplayText?: string;
 }
 
 export const TelegramModal: React.FC<TelegramModalProps> = ({
   isOpen,
   onClose,
-  telegramLink = 'https://t.me/+centralvirtual',
+  buttonText
 }) => {
-  const [countdown, setCountdown] = useState<number>(3);
-
-  useEffect(() => {
-    if (!isOpen) {
-      setCountdown(3);
-      return;
-    }
-
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [isOpen]);
-
-  const handleDirectRedirect = () => {
-    window.open(telegramLink, '_blank', 'noopener,noreferrer');
-  };
+  const isSuporte = buttonText?.includes('SUPORTE') || buttonText?.includes('vaga') || buttonText?.includes('GARANTIR');
+  const finalLink = isSuporte ? "https://t.me" : "https://t.me";
+  const finalBtnText = isSuporte ? "FALAR COM O SUPORTE AGORA" : "ENTRAR NO TELEGRAM AGORA";
+  const finalDisplayLink = isSuporte ? "t.me/suportecentralvirtual" : "t.me/+E4BHwf5riSNmMjBh";
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-black/80 backdrop-blur-md"
-          />
-
-          {/* Modal Content */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-            className="relative w-full max-w-md bg-[#07160b] border-2 border-[#1e4a27] rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(34,197,94,0.3)] text-center z-10 overflow-hidden"
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="relative w-full max-w-lg p-6 rounded-2xl bg-[#0B150F] border border-[#17B95B]/20 text-white shadow-2xl"
           >
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white p-1 rounded-full bg-[#0d2814] border border-[#1b4324] transition-colors"
-            >
-              <X className="w-5 h-5" />
+            <button onClick={onClose} className="absolute top-4 right-4 p-1 rounded-full text-zinc-400 hover:text-white bg-zinc-900/50">
+              <X size={18} />
             </button>
 
-            {/* Glowing Logo */}
-            <div className="flex justify-center mb-3 mt-1">
-              <Logo size="sm" showText={false} />
-            </div>
-
-            <div className="inline-flex items-center gap-1.5 bg-[#12311b] text-[#22c55e] text-xs font-black px-3 py-1 rounded-full uppercase mb-3 border border-[#1f4e2b]">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>VAGA GRATUITA RESERVADA</span>
-            </div>
-
-            <h3 className="font-heading font-black text-xl sm:text-2xl text-white uppercase mb-2">
-              Acesso Liberado!
-            </h3>
-
-            <p className="text-gray-300 text-xs sm:text-sm mb-5 leading-relaxed">
-              Você está sendo redirecionado para o canal oficial da <strong className="text-[#22c55e]">Central Virtual</strong> no Telegram com mais de 5 mil membros.
-            </p>
-
-            {/* Benefits Checklist */}
-            <div className="bg-[#040e06] border border-[#14351d] rounded-xl p-3.5 mb-5 text-left space-y-2 text-xs text-gray-200">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#22c55e] shrink-0" />
-                <span>Leituras estatísticas da IA em tempo real</span>
+            <div className="flex flex-col items-center text-center space-y-4">
+              <Logo className="h-12 w-auto" />
+              
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#17B95B]/10 text-[#17B95B] text-xs font-semibold tracking-wide uppercase border border-[#17B95B]/20">
+                <ShieldCheck size={14} /> VAGA GRATUITA RESERVADA
               </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#22c55e] shrink-0" />
-                <span>Gestão profissional e transmissões diárias</span>
+
+              <h3 className="text-2xl font-black tracking-tight text-white uppercase">
+                ACESSO LIBERADO!
+              </h3>
+
+              <p className="text-sm text-zinc-400 max-w-sm">
+                Você está sendo redirecionado para o canal oficial da <span className="text-[#17B95B] font-semibold">Central Virtual</span> no Telegram com mais de 5 mil membros.
+              </p>
+
+              <div className="w-full p-4 rounded-xl bg-black/40 border border-zinc-800/50 text-left space-y-2.5 text-xs text-zinc-300">
+                <div className="flex items-center gap-2"><CheckCircle2 size={14} className="text-[#17B95B]" /> Leituras estatísticas da IA em tempo real</div>
+                <div className="flex items-center gap-2"><CheckCircle2 size={14} className="text-[#17B95B]" /> Gestão profissional e transmissões diárias</div>
+                <div className="flex items-center gap-2"><Users size={14} className="text-[#17B95B]" /> Comunidade 100% gratuita sem taxas</div>
               </div>
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-[#22c55e] shrink-0" />
-                <span>Comunidade 100% gratuita sem taxas</span>
-              </div>
+
+              <a 
+                href={finalLink}
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-[#17B95B] hover:bg-[#149e4d] text-black font-black text-sm uppercase tracking-wide transition-all shadow-[0_0_20px_rgba(23,185,91,0.3)] hover:scale-[1.01]"
+              >
+                <Send size={16} fill="black" /> {finalBtnText} <ExternalLink size={14} />
+              </a>
+
+              <span className="text-[10px] text-zinc-500 font-mono tracking-wider">
+                Link direto: {finalDisplayLink}
+              </span>
             </div>
-
-            {/* Direct Action Button */}
-            <button
-              onClick={handleDirectRedirect}
-              className="w-full flex items-center justify-center gap-2.5 bg-gradient-to-b from-[#34d399] to-[#16a34a] hover:from-[#4ade80] hover:to-[#22c55e] text-black font-heading font-black text-base py-3.5 px-6 rounded-xl shadow-[0_0_20px_rgba(34,197,94,0.6)] cursor-pointer transition-all transform hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <Send className="w-5 h-5 text-black fill-black" />
-              <span>ENTRAR NO TELEGRAM AGORA</span>
-              <ExternalLink className="w-4 h-4 text-black stroke-[3]" />
-            </button>
-
-            <p className="text-[11px] text-gray-400 mt-3 font-medium">
-              Link direto: <span className="text-[#22c55e]">t.me/+centralvirtual</span>
-            </p>
           </motion.div>
         </div>
       )}
