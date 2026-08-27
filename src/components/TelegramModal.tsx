@@ -14,8 +14,11 @@ interface TelegramModalProps {
 export const TelegramModal: React.FC<TelegramModalProps> = ({
   isOpen,
   onClose,
-  buttonText
+  telegramLink,
+  buttonText,
+  linkDisplayText
 }) => {
+  // Se o botão principal da página de vendas for o do suporte, direciona para o suporte. Caso contrário, grupo.
   const isSuporte = buttonText?.toUpperCase().includes('VAGA') || buttonText?.toUpperCase().includes('SUPORTE') || buttonText?.toUpperCase().includes('GARANTIR');
   
   const finalLink = isSuporte ? "https://t.me" : "https://t.me";
