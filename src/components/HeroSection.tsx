@@ -60,7 +60,7 @@ export const HeroSection: React.FC = () => {
         >
           {/* BOTÃO DO GRUPO (DIRETO) */}
           <a 
-            href="https://t.me"
+            href="https://t.me/+E4BHwf5riSNmMjBh"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-5 rounded-xl bg-[#17B95B] hover:bg-[#149e4d] text-black font-black text-sm uppercase tracking-wide transition-all shadow-[0_0_30px_rgba(23,185,91,0.25)] hover:scale-[1.02]"
@@ -70,7 +70,7 @@ export const HeroSection: React.FC = () => {
 
           {/* BOTÃO DO SUPORTE (DIRETO) */}
           <a 
-            href="https://t.me"
+            href="https://t.me/suportecentralvirtual"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-5 rounded-xl bg-transparent hover:bg-zinc-900/50 text-white font-black text-sm uppercase tracking-wide transition-all border border-zinc-800 hover:border-zinc-700"
