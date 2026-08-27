@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CheckCircle2, ExternalLink, ShieldCheck, Users } from 'lucide-react';
-import Logo from './Logo';
+import { Logo } from './Logo';
+
 
 interface TelegramModalProps {
   isOpen: boolean;
