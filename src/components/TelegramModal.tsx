@@ -19,6 +19,7 @@ export const TelegramModal: React.FC<TelegramModalProps> = ({
   
   const isSuporte = buttonText?.toUpperCase().includes('VAGA') || buttonText?.toUpperCase().includes('SUPORTE') || buttonText?.toUpperCase().includes('GARANTIR');
 
+
   const finalBtnText = isSuporte ? "FALAR COM O SUPORTE AGORA" : "ENTRAR NO TELEGRAM AGORA";
   const finalDisplayLink = isSuporte ? "t.me/suportecentralvirtual" : "t.me/+E4BHwf5riSNmMjBh";
 
