@@ -1,104 +1,96 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { MessageSquare, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { Logo } from './Logo';
-import { CtaButton } from './CtaButton';
-import { Lock } from 'lucide-react';
 
-interface HeroSectionProps {
-  onCtaClick?: () => void;
-}
-
-export const HeroSection: React.FC<HeroSectionProps> = ({ onCtaClick }) => {
+export const HeroSection: React.FC = () => {
   return (
-    <section className="relative pt-6 pb-12 px-4 flex flex-col items-center text-center max-w-2xl mx-auto">
-      {/* Background ambient glow */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-72 h-72 bg-[#22c55e]/15 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 bg-[#030704] overflow-hidden">
+      {/* Efeitos de Fundo */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(23,185,91,0.08)_0%,transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(23,185,91,0.03)_0%,transparent_50%)]" />
+      
+      <div className="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-8">
+        
+        {/* Logomarca Centralizada */}
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex justify-center mb-6"
+        >
+          <Logo className="h-16 w-auto" />
+        </motion.div>
 
-      {/* Central Virtual Logo */}
-      <div className="mb-5 transform transition-transform hover:scale-105 duration-300">
-        <Logo size="md" showText={true} />
-      </div>
+        {/* Tag de Alerta */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#17B95B]/10 text-[#17B95B] border border-[#17B95B]/20 text-xs font-black uppercase tracking-wider mx-auto"
+        >
+          <ShieldCheck size={14} /> MÉTODO 100% VALIDADO PELA IA
+        </motion.div>
 
-      {/* Pill Badge */}
-      <div className="inline-flex items-center gap-2 bg-[#091b0e]/90 border border-[#1b4324] px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(34,197,94,0.15)] mb-5">
-        <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse shadow-[0_0_8px_#22c55e]" />
-        <span className="text-[11px] sm:text-xs font-black tracking-wider text-[#22c55e] uppercase font-heading">
-          ANÁLISE AO VIVO • FUTEBOL VIRTUAL
-        </span>
-      </div>
+        {/* Título Principal Impactante */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase leading-none"
+        >
+          DESCUBRA A ESTRATÉGIA QUE <br />
+          <span className="text-[#17B95B] bg-gradient-to-r from-[#17B95B] to-[#129147] bg-clip-text text-transparent">FROUXA A BANCA</span> NO VIRTUAL
+        </motion.h1>
 
-      {/* Main Headline */}
-      <h1 className="font-heading font-black text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-white leading-[1.1] mb-3">
-        Acompanhe o Futebol <br />
-        Virtual <br />
-        <span className="text-[#22c55e] text-glow-green">
-          Ao Vivo Com a Gente!
-        </span>
-      </h1>
+        {/* Subtítulo descritivo */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-zinc-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed"
+        >
+          Chega de quebrar bancas com achismos. Tenha acesso imediato aos mesmos sinais automatizados que os grandes players usam para lucrar diariamente.
+        </motion.p>
 
-      {/* Subheadline (Gold/Yellow) */}
-      <h2 className="font-heading font-extrabold text-xs sm:text-sm tracking-wide text-[#eab308] uppercase max-w-lg mb-6 leading-snug">
-        Método Validado Há Mais de 5 Anos e Uma IA Exclusiva
-      </h2>
+        {/* BOTÕES PRINCIPAIS DE REDIRECIONAMENTO DIRETO */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 max-w-md mx-auto sm:max-w-none"
+        >
+          {/* BOTÃO DO GRUPO (DIRETO) */}
+          <a 
+            href="https://t.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-5 rounded-xl bg-[#17B95B] hover:bg-[#149e4d] text-black font-black text-sm uppercase tracking-wide transition-all shadow-[0_0_30px_rgba(23,185,91,0.25)] hover:scale-[1.02]"
+          >
+            ENTRAR NO GRUPO GRÁTIS <ArrowRight size={16} />
+          </a>
 
-      {/* Info Card */}
-      <div className="w-full bg-[#08180d]/80 border border-[#173a20] rounded-2xl p-4 sm:p-5 mb-7 text-gray-300 text-xs sm:text-sm leading-relaxed shadow-lg">
-        <p>
-          Análises <strong className="text-white font-bold">em tempo real</strong>, com método e sem achismo. Junte-se a <strong className="text-[#22c55e] font-bold">+5 mil pessoas</strong> no grupo <strong className="text-white font-bold">100% gratuito</strong> no Telegram.
-        </p>
-      </div>
+          {/* BOTÃO DO SUPORTE (DIRETO) */}
+          <a 
+            href="https://t.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-5 rounded-xl bg-transparent hover:bg-zinc-900/50 text-white font-black text-sm uppercase tracking-wide transition-all border border-zinc-800 hover:border-zinc-700"
+          >
+            <MessageSquare size={16} className="text-[#17B95B]" /> FALAR COM SUPORTE
+          </a>
+        </motion.div>
 
-      {/* CTA Button & Subtext */}
-      <div className="w-full flex flex-col items-center mb-10">
-        <CtaButton
-          id="hero-cta-button"
-          text="ENTRAR NO GRUPO GRÁTIS"
-          onClick={onCtaClick}
-        />
-        <div className="flex items-center justify-center gap-1.5 mt-3 text-xs text-gray-400 font-medium">
-          <Lock className="w-3.5 h-3.5 text-[#eab308]" />
-          <span className="text-[#22c55e] font-bold">100% gratuito</span>
-          <span className="text-gray-500">•</span>
-          <span>acesso imediato pelo Telegram</span>
-        </div>
-      </div>
+        {/* Benefícios rápidos no rodapé do topo */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pt-8 text-xs text-zinc-500 font-medium"
+        >
+          <div className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-[#17B95B]" /> Sinais 24h por dia</div>
+          <div className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-[#17B95B]" /> Sem mensalidade</div>
+          <div className="flex items-center gap-1.5"><CheckCircle2 size={14} className="text-[#17B95B]" /> Suporte Individual</div>
+        </motion.div>
 
-      {/* 4 Stats Grid */}
-      <div className="w-full bg-[#07170c]/90 border border-[#16381e] rounded-2xl p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 divide-y sm:divide-y-0 sm:divide-x divide-[#16381e] shadow-xl">
-        <div className="flex flex-col items-center justify-center pt-2 sm:pt-0">
-          <span className="font-heading font-black text-lg sm:text-xl text-[#22c55e] tracking-tight">
-            +5 ANOS
-          </span>
-          <span className="text-[10px] sm:text-xs uppercase font-bold text-gray-400 tracking-wider">
-            DE MERCADO
-          </span>
-        </div>
-
-        <div className="flex flex-col items-center justify-center pt-2 sm:pt-0 sm:pl-3">
-          <span className="font-heading font-black text-lg sm:text-xl text-[#22c55e] tracking-tight">
-            AO VIVO
-          </span>
-          <span className="text-[10px] sm:text-xs uppercase font-bold text-gray-400 tracking-wider">
-            NO ESTÚDIO
-          </span>
-        </div>
-
-        <div className="flex flex-col items-center justify-center pt-2 sm:pt-0 sm:pl-3">
-          <span className="font-heading font-black text-lg sm:text-xl text-[#22c55e] tracking-tight">
-            IA PRÓPRIA
-          </span>
-          <span className="text-[10px] sm:text-xs uppercase font-bold text-gray-400 tracking-wider">
-            SEM DELAY
-          </span>
-        </div>
-
-        <div className="flex flex-col items-center justify-center pt-2 sm:pt-0 sm:pl-3">
-          <span className="font-heading font-black text-lg sm:text-xl text-[#22c55e] tracking-tight">
-            +5 MIL
-          </span>
-          <span className="text-[10px] sm:text-xs uppercase font-bold text-gray-400 tracking-wider">
-            MEMBROS
-          </span>
-        </div>
       </div>
     </section>
   );
