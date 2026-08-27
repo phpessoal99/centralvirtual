@@ -34,12 +34,11 @@ export const StudioSection: React.FC = () => {
                 <p className="text-xs text-zinc-500">Alertas enviados com a máxima velocidade para você não perder nenhuma oportunidade.</p>
               </div>
               <div className="p-4 rounded-xl bg-black/40 border border-zinc-800/50 space-y-2">
-                <div className="flex items-center gap-2 text-[#17B95B] font-bold"><ShieldCheck size={16} /> Gestão Segura</div>
+                <div className="flex items-center gap-2 text-[#17B95B] font-bold"><ShieldCheck size={16} /> Gestão Secura</div>
                 <p className="text-xs text-zinc-500">Metodologia profissional focada na proteção e crescimento constante da sua banca.</p>
               </div>
             </div>
 
-            {/* BOTÃO DO GRUPO (DIRETO PARA O SEU LINK) */}
             <div className="pt-4">
               <a 
                 href="https://t.me"
