@@ -49,7 +49,7 @@ export const StudioSection: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden border border-zinc-800 bg-black/20 backdrop-blur">
               <img 
-                src="/studio_original_upd2nd.png" 
+                src="/studio_final_premium.png"
                 alt="Estúdio Central Virtual - Análise Ao Vivo" 
                 className="w-full h-auto max-h-[450px] object-contain mx-auto"
               />
