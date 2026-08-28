@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Radio, ShieldCheck, Zap } from 'lucide-react';
-import studioImage from '../assets/studio_final_premium.png';
 
 export const StudioSection: React.FC = () => {
   return (
@@ -26,7 +25,7 @@ export const StudioSection: React.FC = () => {
             </h2>
             
             <p className="text-zinc-400 text-base md:text-lg leading-relaxed">
-              Assista às análises em tempo real, veja a leitura de padrões da nossa inteligência artificial e copie as mesmas entradas que geram resultados consistentes no futebol virtual.
+              Assista às análises ininterruptas, veja a leitura de padrões da nossa inteligência artificial e copie as mesmas entradas que geram resultados estáveis no futebol virtual.
             </p>
             
             <div className="grid sm:grid-cols-2 gap-4">
@@ -50,7 +49,7 @@ export const StudioSection: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden border border-zinc-800 bg-black/20 backdrop-blur">
               <img 
-                src={studioImage} 
+                src="/studio_final_premium.png" 
                 alt="Estúdio Central Virtual - Análise Ao Vivo" 
                 className="w-full h-auto max-h-[450px] object-contain mx-auto"
               />
