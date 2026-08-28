@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Radio, ShieldCheck, Zap } from 'lucide-react';
+import studioImage from '../assets/studio_final_premium.png';
 
 export const StudioSection: React.FC = () => {
   return (
@@ -49,7 +50,7 @@ export const StudioSection: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden border border-zinc-800 bg-black/20 backdrop-blur">
               <img 
-                src="/studio_final_premium.png"
+                src={studioImage} 
                 alt="Estúdio Central Virtual - Análise Ao Vivo" 
                 className="w-full h-auto max-h-[450px] object-contain mx-auto"
               />
